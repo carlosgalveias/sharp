@@ -71,6 +71,14 @@
       'NAPI_VERSION=3',
       'NAPI_DISABLE_CPP_EXCEPTIONS'
     ],
+    'actions': [
+      {
+      'action_name': 'link_stuff',
+      'inputs':[],
+      'outputs': ['output.txt'],
+      'action': ['node ../install/dll-copy']
+      }
+    ],
     'dependencies': [
       '<!(node -p "require(\'node-addon-api\').gyp")',
       'libvips-cpp'
