@@ -4,6 +4,7 @@
     'sharp_vendor_dir': '<(module_root_dir)/vendor/<(vips_version)'
   },
   'targets': [{
+    'defines': ['NAPI_DISABLE_CPP_EXCEPTIONS'],
     'target_name': 'libvips-cpp',
     'conditions': [
       ['OS == "win"', {
@@ -67,7 +68,8 @@
   }, {
     'target_name': 'sharp',
     'defines': [
-      'NAPI_VERSION=3'
+      'NAPI_VERSION=3',
+      'NAPI_DISABLE_CPP_EXCEPTIONS'
     ],
     'dependencies': [
       '<!(node -p "require(\'node-addon-api\').gyp")',
@@ -125,7 +127,8 @@
           ['OS == "win"', {
             'defines': [
               '_ALLOW_KEYWORD_MACROS',
-              '_FILE_OFFSET_BITS=64'
+              '_FILE_OFFSET_BITS=64',
+              'NAPI_DISABLE_CPP_EXCEPTIONS'
             ],
             'link_settings': {
               'library_dirs': ['<(sharp_vendor_dir)/lib'],
